@@ -1,15 +1,12 @@
-FROM python:3
-
-RUN mkdir /code
-
-WORKDIR /code
-
-COPY requirements.txt /code/
-
-RUN pip install -r requirements.txt
-COPY . /code/
-
-
+FROM python:3.11-slim
+ENV PORT 8000
 EXPOSE 8000
+WORKDIR /usr/src/app
 
-CMD exec gunicorn insurance.wsgi:application --bind 0.0.0.0:8000
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]
