@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app4
-  namespace: namespace-workflow-1684874648606
+  name: app5
+  namespace: namespace-workflow-1684875970296
 spec:
   type: LoadBalancer
   selector:
-    app: app4
+    app: app5
   ports:
     - protocol: TCP
       port: 8000
